@@ -1,0 +1,20 @@
+version: "2"
+services:
+  jenkins:
+    # dns: 
+    # build: .
+    environment:
+      JAVA_OPTS: "-Djava.awt.headless=true"
+    container_name: svn
+    image: lipotes/jenkins
+    restart: always
+    hostname: 'svn-docker'
+    privileged: true
+    ports:
+      - '3690:3690'
+    # network_mode: host
+    volumes:
+      - ${BASE_DIR}/svnrepo:/data/svnrepo
+
+    # entrypoint: [/usr/sbin/init]
+      
